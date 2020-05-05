@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BillPay Viewer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/modern-business.css"
+          th:href="@{css/modern-business.css}" rel="stylesheet"/>
+    <link href="../static/css/main.css"
+          th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Bill Pay Viewer</a>
+
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <h1 class="my-4">Bill Pay Viewer</h1>
+
+    <!-- Features Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <h2 th:text="'Results for Invoice ID: ' + ${billPayItemModel.invoiceId}"></h2>
+                <div th:if="${#lists.isEmpty(billPayItemModel.billPayItemList)}">
+                    <h3>There are no records</h3>
+                </div>
+
+                <div th:if="${not #lists.isEmpty(billPayItemModel.billPayItemList)}">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Bill Pay ID</th>
+                            <th>Payment Category</th>
+                            <th>Invoice ID</th>
+                            <th>Invoice Description</th>
+                            <th>Payment Type</th>
+                            <th>Payment Amount</th>
+                            <th>Payment Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="billPayItem : ${billPayItemModel.billPayItemList}">
+                            <td th:text="${billPayItem.billPayId}"></td>
+                            <td th:text="${billPayItem.paymentCategory}"></td>
+                            <td th:text="${billPayItem.invoiceId}"></td>
+                            <td th:text="${billPayItem.invoiceDescription}"></td>
+                            <td th:text="${billPayItem.paymentType}"></td>
+                            <td th:text="${billPayItem.paymentAmount}"></td>
+                            <td th:text="${billPayItem.paymentDate}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="btn-new-search">
+                <a href="/" class="btn btn-secondary" role="button">New Search</a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- JavaScript -->
+
+</body>
+
+</html>

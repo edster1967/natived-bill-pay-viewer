@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BillPay Viewer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/modern-business.css"
+          th:href="@{css/modern-business.css}" rel="stylesheet"/>
+    <link href="../static/css/main.css"
+          th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Bill Pay Viewer</a>
+
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <h1 class="my-4">Welcome to the Bill Pay Viewer</h1>
+
+    <!-- Features Section -->
+    <div class="row">
+        <div class="col-lg-12">
+
+            <h2>Enter the invoice ID</h2>
+
+            <form action="#"  th:action="@{/getBillPayItemsByInvoiceId}" th:object="${billPayItemModel}"method="post">
+                <label for="billPayId"></label>
+                <input type="text" class="form-control" id="billPayId" placeholder="invoice ID" name="billPayId" th:field="*{invoiceId}">
+                <p class="form-error" th:if="${#fields.hasErrors('invoiceId')}" th:errors="*{invoiceId}"></p>
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- JavaScript -->
+
+</body>
+
+</html>
