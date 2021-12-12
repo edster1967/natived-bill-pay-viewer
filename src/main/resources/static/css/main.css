@@ -16,6 +16,10 @@ body {
     padding-bottom: 1rem;
 }
 
+.btn-invoice-search{
+    /*margin-top: 1rem;*/
+}
+
 .form-error{
     color: red;
 }

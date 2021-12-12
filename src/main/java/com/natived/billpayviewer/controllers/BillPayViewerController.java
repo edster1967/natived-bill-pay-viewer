@@ -20,16 +20,17 @@ public class BillPayViewerController {
 
     @RequestMapping("/")
     public String getHome (BillPayItemModel billPayItemModel){
+        billPayItemModel.setInvoiceId("");
         return "index";
     }
 
-    @RequestMapping("/getBillPayItemById")
-    public String getBillPayItemById(@Valid BillPayItemModel model, BindingResult bindingResult){
+    @RequestMapping("/getAllBillPayItems")
+    public String getBillPayItems(@Valid BillPayItemModel model, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "index";
         }
 
-        model.setBillPayItemList(billPayViewerRepository.findBillPayItemByBillPayId(model.getBillPayId()));
+        model.setBillPayItemList(billPayViewerRepository.findAll());
 
         return "BillPayResults";
     }

@@ -10,4 +10,5 @@ public interface BillPayViewerRepository extends CrudRepository<BillPayItem, Int
 
     List<BillPayItem> findBillPayItemsByInvoiceId(String invoiceId);
 
+    List<BillPayItem> findAll();
 }
